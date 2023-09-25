@@ -50,6 +50,13 @@ class NitResource extends Resource
                 // TextColumn::make('aportesSocialess.morosidad')->label('Morosidad')->money('cop')->sortable(),
                 TextColumn::make('saldo_aportes')->label('Saldo aportes')->money('cop')->sortable(),
                 //TextColumn::make('relacion')->enum([ 'A' => 'Asociado', 'T' => 'Tercero', 'C' => 'Codeudor',])->label('Relación')->sortable(),
+                TextColumn::make('relacion')
+                ->formatStateUsing(fn (string $state): string => match ($state) {
+                    'A' => 'Asociado',
+                    'T' => 'Tercero',
+                    'C' => 'Codeudor',
+                })->label('Relación'),
+
                 TextColumn::make('edad')->label('Edad')->sortable(),
                 TextColumn::make('fecha_ult_actualizacion_datos')->label('Fecha últ. actualización')->date('d/m/Y')->sortable(),
                 TextColumn::make('fecha_ingreso')->label('Fecha ingreso')->date('d/m/Y')->sortable(),                
