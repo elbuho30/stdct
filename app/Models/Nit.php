@@ -12,12 +12,12 @@ class Nit extends Model
         $database = env('DB_CONNECTION');
 
         $date_format = parent::getDateFormat();
-        if ($database == 'sqlsrv') 
+        if ($database == 'sqlsrv')
             $date_format = 'Ymd H:i:s';
 
         return $date_format;
     }
-    
+
     use HasFactory;
 
     protected $table = 'nits';
@@ -30,10 +30,14 @@ class Nit extends Model
 
     public function banco(){
         return $this->belongsTo(CrmBanco::class, 'id_banco', 'id');
-    } 
+    }
 
     public function aportesSociales(){
         return $this->hasMany(CrmAportesSociales::class, 'nro_documento', 'nro_documento' );
+    }
+
+    public function aportesSocialesUnion(){
+        return $this->hasMany(Aportesocext::class, 'nro_documento', 'nro_documento' );
     }
 
     public function ahorrosVista(){
@@ -54,15 +58,15 @@ class Nit extends Model
 
     public function cuentasCorrientes(){
         return $this->hasMany(CrmCuentasCorrientes::class, 'nro_documento', 'nro_documento');
-    }  
+    }
 
     public function creditos(){
         return $this->hasMany(CrmCreditos::class, 'nro_documento', 'nro_documento');
-    } 
+    }
 
     public function creditosCastigados(){
         return $this->hasMany(CrmCreditosCastigados::class, 'nro_documento', 'nro_documento');
-    } 
+    }
 
     public function rotativos(){
         return $this->hasMany(CrmCuposRotativos::class, 'nro_documento', 'nro_documento');
@@ -131,7 +135,7 @@ class Nit extends Model
     public function ingresoAsoc(){
         return $this->belongsTo(CrmIngresosAsociados::class, 'nro_documento','nro_documento');
     }
-    
+
     public function egresos(){
         return $this->hasMany(CrmEgresosAsociados::class, 'nro_documento', 'nro_documento');
     }
@@ -141,45 +145,45 @@ class Nit extends Model
         return $this->belongsTo(Tipodocumento::class, 'tipo_identificacion','id');
     }
     public function ciudadExpedicion(){
-        return $this->belongsTo(CrmCiudad::class, 'id_pdc_documento', 'id_pdc');
+        return $this->belongsTo(Ciudad::class, 'id_pdc_documento', 'id_pdc');
     }
 
     public function paisExpedicion(){
-        return $this->belongsTo(CrmPais::class, 'id_pais_documento', 'id_pais');
+        return $this->belongsTo(Pais::class, 'id_pais_documento', 'id_pais');
     }
 
     public function departamentoExpedicion()
     {
-        return $this->belongsTo(CrmDepartamento::class, 'id_pd_documento', 'id_pd');
+        return $this->belongsTo(Departamento::class, 'id_pd_documento', 'id_pd');
     }
 
     public function paisNacimiento()
     {
-       return $this->belongsTo(CrmPais::class, 'id_pais_nace', 'id_pais');
+       return $this->belongsTo(Pais::class, 'id_pais_nace', 'id_pais');
     }
 
     public function paisResidencia()
     {
-        return $this->belongsTo(CrmPais::class, 'id_pais_reside', 'id_pais');
+        return $this->belongsTo(Pais::class, 'id_pais_reside', 'id_pais');
     }
 
     public function ciudadNacimiento(){
-        return $this->belongsTo(CrmCiudad::class, 'id_pdc_nace', 'id_pdc');
+        return $this->belongsTo(Ciudad::class, 'id_pdc_nace', 'id_pdc');
     }
 
     public function ciudadResidencia()
     {
-        return $this->belongsTo(CrmCiudad::class, 'id_ciudad_reside', 'id_ciudad');
+        return $this->belongsTo(Ciudad::class, 'id_ciudad_reside', 'id_ciudad');
     }
 
     public function departamentoNacimiento()
     {
-        return $this->belongsTo(CrmDepartamento::class, 'id_pd_nace', 'id_pd');
+        return $this->belongsTo(Departamento::class, 'id_pd_nace', 'id_pd');
     }
 
     public function departamentoResidencia()
     {
-        return $this->belongsTo(CrmDepartamento::class, 'id_dep_reside', 'id_departamento');
+        return $this->belongsTo(Departamento::class, 'id_dep_reside', 'id_departamento');
     }
 
     public function conyugues(){
@@ -225,7 +229,7 @@ class Nit extends Model
     {
         return $this->belongsTo(CrmDivisionCiiu::class, 'id_division_ciiu', 'id');
     }
-    
+
     public function tipoContrato(Type $var = null)
     {
         return $this->belongsTo(CrmTipoContrato::class, 'id_tipo_contrato', 'id');
@@ -237,7 +241,7 @@ class Nit extends Model
 
     public function zonaUbicacion(){
         return $this->belongsTo(CrmZonasUbicacion::class, 'id_pdcz_reside', 'id_pdcz');
-    }  
+    }
 
     public function barrioUbicacion(){
         return $this->belongsTo(CrmBarriosUbicacion::class, 'id_pdczcb_reside', 'id_pdczcb');

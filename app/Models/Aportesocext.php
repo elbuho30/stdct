@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tipodocumento extends Model
+class Aportesocext extends Model
 {
     public function getDateFormat()
     {
         $database = env('DB_CONNECTION');
 
         $date_format = parent::getDateFormat();
-        if ($database == 'sqlsrv') 
+        if ($database == 'sqlsrv')
             $date_format = 'Ymd H:i:s';
 
         return $date_format;
@@ -20,7 +20,6 @@ class Tipodocumento extends Model
 
     use HasFactory;
 
-    protected $table = 'tipo_documento';
+    protected $table = 'aportessocext';
     protected $guarded = ['id'];
-
 }
