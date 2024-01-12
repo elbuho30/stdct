@@ -141,45 +141,45 @@ class Nit extends Model
         return $this->belongsTo(Tipodocumento::class, 'tipo_identificacion','id');
     }
     public function ciudadExpedicion(){
-        return $this->belongsTo(CrmCiudad::class, 'id_pdc_documento', 'id_pdc');
+        return $this->belongsTo(Ciudad::class, 'id_pdc_documento', 'id_pdc');
     }
 
     public function paisExpedicion(){
-        return $this->belongsTo(CrmPais::class, 'id_pais_documento', 'id_pais');
+        return $this->belongsTo(Pais::class, 'id_pais_documento', 'id_pais');
     }
 
     public function departamentoExpedicion()
     {
-        return $this->belongsTo(CrmDepartamento::class, 'id_pd_documento', 'id_pd');
+        return $this->belongsTo(Departamento::class, 'id_pd_documento', 'id_pd');
     }
 
     public function paisNacimiento()
     {
-       return $this->belongsTo(CrmPais::class, 'id_pais_nace', 'id_pais');
+       return $this->belongsTo(Pais::class, 'id_pais_nace', 'id_pais');
     }
 
     public function paisResidencia()
     {
-        return $this->belongsTo(CrmPais::class, 'id_pais_reside', 'id_pais');
+        return $this->belongsTo(Pais::class, 'id_pais_reside', 'id_pais');
     }
 
     public function ciudadNacimiento(){
-        return $this->belongsTo(CrmCiudad::class, 'id_pdc_nace', 'id_pdc');
+        return $this->belongsTo(Ciudad::class, 'id_pdc_nace', 'id_pdc');
     }
 
     public function ciudadResidencia()
     {
-        return $this->belongsTo(CrmCiudad::class, 'id_ciudad_reside', 'id_ciudad');
+        return $this->belongsTo(Ciudad::class, 'id_ciudad_reside', 'id_ciudad');
     }
 
     public function departamentoNacimiento()
     {
-        return $this->belongsTo(CrmDepartamento::class, 'id_pd_nace', 'id_pd');
+        return $this->belongsTo(Departamento::class, 'id_pd_nace', 'id_pd');
     }
 
     public function departamentoResidencia()
     {
-        return $this->belongsTo(CrmDepartamento::class, 'id_dep_reside', 'id_departamento');
+        return $this->belongsTo(Departamento::class, 'id_dep_reside', 'id_departamento');
     }
 
     public function conyugues(){
