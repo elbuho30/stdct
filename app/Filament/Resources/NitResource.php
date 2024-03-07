@@ -21,6 +21,8 @@ use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 
 #relation manager
+
+#relation manager
 use Filament\Resources\RelationManagers\RelationGroup;
 
 #Form
@@ -39,6 +41,13 @@ class NitResource extends Resource
     protected static ?string $navigationLabel = 'Asociados';
     protected static ?int $navigationSort = 1;
     protected static ?string $pluralModelLabel = 'Asociados';
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            Actions\DeleteAction::make(),
+        ];
+    }
 
     protected function getHeaderActions(): array
     {
@@ -322,6 +331,7 @@ class NitResource extends Resource
             'index' => Pages\ListNits::route('/'),
             'create' => Pages\CreateNit::route('/create'),
             'view' => Pages\ViewNit::route('/{record}'),
+            // 'edit' => Pages\EditNit::route('/{record}/edit'),
             // 'edit' => Pages\EditNit::route('/{record}/edit'),
         ];
     }
