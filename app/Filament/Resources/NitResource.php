@@ -21,8 +21,6 @@ use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 
 #relation manager
-
-#relation manager
 use Filament\Resources\RelationManagers\RelationGroup;
 
 #Form
@@ -41,13 +39,6 @@ class NitResource extends Resource
     protected static ?string $navigationLabel = 'Asociados';
     protected static ?int $navigationSort = 1;
     protected static ?string $pluralModelLabel = 'Asociados';
-
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\DeleteAction::make(),
-        ];
-    }
 
     protected function getHeaderActions(): array
     {
@@ -257,19 +248,19 @@ class NitResource extends Resource
                     }),
             ])
             ->actions([
-                Tables\Actions\ActionGroup::make([
-                    Tables\Actions\ViewAction::make(),
+                Tables\Actions\ViewAction::make(),
+                //Tables\Actions\ActionGroup::make([
                     // Tables\Actions\EditAction::make(),
                     // Tables\Actions\DeleteAction::make(),
                     // Tables\Actions\ForceDeleteAction::make(),
-                    Tables\Actions\RestoreAction::make(),
-                ])->color('info')
-                    ->icon('heroicon-s-cog-6-tooth')
-                    ->tooltip('Acciones')
+                   // Tables\Actions\RestoreAction::make(),
+                //])->color('info')
+               //     ->icon('heroicon-s-cog-6-tooth')
+               //     ->tooltip('Acciones')
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                   // Tables\Actions\DeleteBulkAction::make(),
                     ExportBulkAction::make()->label('Exportar a Excel'),
                 ]),
             ]);
@@ -278,50 +269,51 @@ class NitResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationGroup::make('Estado de cuenta',[
-                RelationManagers\AportessocialesunionRelationManager::class,
-            //     /* RelationManagers\AportesExtraordinariosRelationManager::class, */
-            //     RelationManagers\AhorrosVistaRelationManager::class,
-            //     RelationManagers\AhorrosContractualesRelationManager::class,
-            //     RelationManagers\AhorrosTerminoRelationManager::class,
-            //     RelationManagers\CuentasCorrientesRelationManager::class,
-            //     RelationManagers\CreditosRelationManager::class,
-            //     RelationManagers\CreditosCastigadosRelationManager::class,
-            //     RelationManagers\RotativosRelationManager::class,
-            //     RelationManagers\AvancesRotativoRelationManager::class,
-            //     RelationManagers\NovedadesCausadasRelationManager::class,
-            //     RelationManagers\NovedadesNoCausadasRelationManager::class,
-             ]),
-            // RelationManagers\EstudiosAsociadoRelationManager::class,
-            // RelationGroup::make('Información financiera',[
-            //     RelationManagers\IngresoAsocRelationManager::class,
-            //     RelationManagers\EgresosRelationManager::class
-            // ]),
-            // RelationGroup::make('Grupo Familiar',[
-            //     RelationManagers\BeneficiariosRelationManager::class,
-            // ]),
-            // RelationManagers\ReferenciasRelationManager::class,
-            // RelationGroup::make('Activos fijos',[
-            //     RelationManagers\VehiculosAsoRelationManager::class,
-            //     RelationManagers\BienesRaizRelationManager::class
-            // ]),
-            // RelationGroup::make('Servicios sociales',[
-            //     RelationManagers\AuxiliosRelationManager::class,
-            // ]),
-            // RelationManagers\ConsignacionesRelationManager::class,
-            // RelationGroup::make('Codeudores',[
-            //     RelationManagers\CodeudoresRelationManager::class,
-            //     RelationManagers\CodeudoresInvRelationManager::class
-            // ]),
-            // RelationGroup::make('Atenciones', [
-            //     RelationManagers\AtencionRelationManager::class,
-            // ]),
-            // RelationGroup::make('Registro referidos', [
-            //     RelationManagers\ReferidosRelationManager::class,
-            // ]),
-            // RelationManagers\AutorizadoRelationManager::class,
-
-
+                                RelationGroup::make('Aportes',[
+                                    RelationManagers\AportessocialesunionRelationManager::class,
+                                //     /* RelationManagers\AportesExtraordinariosRelationManager::class, */
+                                //     RelationManagers\AhorrosVistaRelationManager::class,
+                                //     RelationManagers\AhorrosContractualesRelationManager::class,
+                                //     RelationManagers\AhorrosTerminoRelationManager::class,
+                                //     RelationManagers\CuentasCorrientesRelationManager::class,
+                                //     RelationManagers\CreditosRelationManager::class,
+                                //     RelationManagers\CreditosCastigadosRelationManager::class,
+                                //     RelationManagers\RotativosRelationManager::class,
+                                //     RelationManagers\AvancesRotativoRelationManager::class,
+                                //     RelationManagers\NovedadesCausadasRelationManager::class,
+                                //     RelationManagers\NovedadesNoCausadasRelationManager::class,
+                                ]),
+                                RelationGroup::make('Ahorros',[
+                                    RelationManagers\AhorrosVistaRelationManager::class,
+                                ]),
+                                // RelationManagers\EstudiosAsociadoRelationManager::class,
+                                // RelationGroup::make('Información financiera',[
+                                //     RelationManagers\IngresoAsocRelationManager::class,
+                                //     RelationManagers\EgresosRelationManager::class
+                                // ]),
+                                // RelationGroup::make('Grupo Familiar',[
+                                //     RelationManagers\BeneficiariosRelationManager::class,
+                                // ]),
+                                // RelationManagers\ReferenciasRelationManager::class,
+                                // RelationGroup::make('Activos fijos',[
+                                //     RelationManagers\VehiculosAsoRelationManager::class,
+                                //     RelationManagers\BienesRaizRelationManager::class
+                                // ]),
+                                // RelationGroup::make('Servicios sociales',[
+                                //     RelationManagers\AuxiliosRelationManager::class,
+                                // ]),
+                                // RelationManagers\ConsignacionesRelationManager::class,
+                                // RelationGroup::make('Codeudores',[
+                                //     RelationManagers\CodeudoresRelationManager::class,
+                                //     RelationManagers\CodeudoresInvRelationManager::class
+                                // ]),
+                                // RelationGroup::make('Atenciones', [
+                                //     RelationManagers\AtencionRelationManager::class,
+                                // ]),
+                                // RelationGroup::make('Registro referidos', [
+                                //     RelationManagers\ReferidosRelationManager::class,
+                                // ]),
+                                // RelationManagers\AutorizadoRelationManager::class,
         ];
     }
 
@@ -331,7 +323,6 @@ class NitResource extends Resource
             'index' => Pages\ListNits::route('/'),
             'create' => Pages\CreateNit::route('/create'),
             'view' => Pages\ViewNit::route('/{record}'),
-            // 'edit' => Pages\EditNit::route('/{record}/edit'),
             // 'edit' => Pages\EditNit::route('/{record}/edit'),
         ];
     }

@@ -33,7 +33,7 @@ class Nit extends Model
     }
 
     public function aportesSociales(){
-        return $this->hasMany(CrmAportesSociales::class, 'nro_documento', 'nro_documento' );
+        return $this->hasMany(Aportesocext::class, 'nro_documento', 'nro_documento' );
     }
 
     public function aportesSocialesUnion(){
@@ -41,7 +41,7 @@ class Nit extends Model
     }
 
     public function ahorrosVista(){
-        return $this->hasMany(CrmAhorrosVista::class, 'nro_documento', 'nro_documento');
+        return $this->hasMany(Ahorrovista::class, 'nro_documento', 'nro_documento');
     }
 
     public function ahorrosContractuales(){
