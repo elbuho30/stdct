@@ -49,35 +49,35 @@ class AhorrosvistaRelationManager extends RelationManager
                 '2xl' => 8,
             ])
                 ->schema([
-                TextColumn::make('linea_ahorro')
-                ->formatStateUsing(fn($state) => new HtmlString('<b>Línea</b><br>' . $state)),
-                TextColumn::make('nro_cuenta')
-                ->formatStateUsing(fn($state) => new HtmlString('<b>Nro. Cuenta</b><br>' . $state)),
-                TextColumn::make('fecha_inicio')
-                ->formatStateUsing(function($state) {
-                    $state = strtotime($state);
-                    return new HtmlString('<b>Fecha Inicio</b><br> '. date('Y-m-d',$state));
-                }),
-                TextColumn::make('saldo')
-                ->formatStateUsing(fn($state) => new HtmlString('<b>Saldo</b><br> $' . number_format($state))),
-                TextColumn::make('cuota')
-                ->formatStateUsing(fn($state) => new HtmlString('<b>Cuota</b><br> $' . number_format($state))),
-                TextColumn::make('morosidad')
-                ->formatStateUsing(fn($state) => new HtmlString('<b>Morosidad</b><br> $' . number_format($state))),
-                TextColumn::make('fecha_ult_trans')
-                ->formatStateUsing(function($state) {
-                    $state = strtotime($state);
-                    return new HtmlString('<b>Últ. Transacción</b><br> '. date('Y-m-d',$state));
-                }),
-                TextColumn::make('estado')
-                ->formatStateUsing(function($state){
-                    if ($state == 'A') {
-                        return new HtmlString('<b>Estado</b><br> Activo');
-                    }else{
-                        return new HtmlString('<b>Estado</b><br> Inactivo');
-                    }
-                }),
-            ]),
+                    TextColumn::make('linea_ahorro')
+                    ->formatStateUsing(fn($state) => new HtmlString('<b>Línea</b><br>' . $state)),
+                    TextColumn::make('nro_cuenta')
+                    ->formatStateUsing(fn($state) => new HtmlString('<b>Nro. Cuenta</b><br>' . $state)),
+                    TextColumn::make('fecha_inicio')
+                    ->formatStateUsing(function($state) {
+                        $state = strtotime($state);
+                        return new HtmlString('<b>Fecha Inicio</b><br> '. date('Y-m-d',$state));
+                    }),
+                    TextColumn::make('saldo')
+                    ->formatStateUsing(fn($state) => new HtmlString('<b>Saldo</b><br> $' . number_format($state))),
+                    TextColumn::make('cuota')
+                    ->formatStateUsing(fn($state) => new HtmlString('<b>Cuota</b><br> $' . number_format($state))),
+                    TextColumn::make('morosidad')
+                    ->formatStateUsing(fn($state) => new HtmlString('<b>Morosidad</b><br> $' . number_format($state))),
+                    TextColumn::make('fecha_ult_trans')
+                    ->formatStateUsing(function($state) {
+                        $state = strtotime($state);
+                        return new HtmlString('<b>Últ. Transacción</b><br> '. date('Y-m-d',$state));
+                    }),
+                    TextColumn::make('estado')
+                    ->formatStateUsing(function($state){
+                        if ($state == 'A') {
+                            return new HtmlString('<b>Estado</b><br> Activo');
+                        }else{
+                            return new HtmlString('<b>Estado</b><br> Inactivo');
+                        }
+                    }),
+             ]),
             Panel::make([
                 Grid::make([
                     'default' => 2,

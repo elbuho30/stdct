@@ -273,8 +273,8 @@ class NitResource extends Resource
                                     RelationManagers\AportessocialesunionRelationManager::class,
                                 //     /* RelationManagers\AportesExtraordinariosRelationManager::class, */
                                 //     RelationManagers\AhorrosVistaRelationManager::class,
-                                //     RelationManagers\AhorrosContractualesRelationManager::class,
-                                //     RelationManagers\AhorrosTerminoRelationManager::class,
+
+
                                 //     RelationManagers\CuentasCorrientesRelationManager::class,
                                 //     RelationManagers\CreditosRelationManager::class,
                                 //     RelationManagers\CreditosCastigadosRelationManager::class,
@@ -285,6 +285,8 @@ class NitResource extends Resource
                                 ]),
                                 RelationGroup::make('Ahorros',[
                                     RelationManagers\AhorrosVistaRelationManager::class,
+                                    RelationManagers\AhorrosContractualesRelationManager::class,
+                                    RelationManagers\AhorrosTerminoRelationManager::class,
                                 ]),
                                 // RelationManagers\EstudiosAsociadoRelationManager::class,
                                 // RelationGroup::make('Información financiera',[

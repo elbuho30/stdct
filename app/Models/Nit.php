@@ -45,11 +45,11 @@ class Nit extends Model
     }
 
     public function ahorrosContractuales(){
-        return $this->hasMany(CrmAhorrosContractual::class, 'nro_documento', 'nro_documento');
+        return $this->hasMany(Ahorrocontractual::class, 'nro_documento', 'nro_documento');
     }
 
     public function ahorrosTermino(){
-        return $this->hasMany(CrmAhorrosTermino::class, 'nro_documento', 'nro_documento');
+        return $this->hasMany(Ahorrotermino::class, 'nro_documento', 'nro_documento');
     }
 
     public function aportesExtraordinarios(){
