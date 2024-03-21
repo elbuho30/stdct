@@ -14,7 +14,7 @@
         </div>
         @endif --}}
         <div @class(['p-2']) x-show="$store.sidebar.isOpen" x-transition:enter="lg:transition lg:delay-100" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
-                <img alt="COOPENTEL" src="/img/logo_coopentel.png" style="height: 4rem;" class="fi-logo flex">
+                <img alt="COOPENTEL" src="/img/logo.png" style="height: 4rem;" class="fi-logo flex">
         </div>
 
         <div x-show="$store.sidebar.isOpen" x-transition:enter="lg:transition lg:delay-100" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
