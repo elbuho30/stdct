@@ -17,7 +17,12 @@ class AportesocextResource extends Resource
 {
     protected static ?string $model = Aportesocext::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $modelLabel ='Aportes';
+    protected static ?int $navigationSort = 1;
+    protected static ?string $navigationGroup = 'Productos';
+    protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
+    protected static ?string $navigationLabel = 'Aportes';
+    protected static ?string $pluralModelLabel ='Aportes';
 
     public static function form(Form $form): Form
     {
@@ -122,14 +127,14 @@ class AportesocextResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -138,5 +143,5 @@ class AportesocextResource extends Resource
             'view' => Pages\ViewAportesocext::route('/{record}'),
             'edit' => Pages\EditAportesocext::route('/{record}/edit'),
         ];
-    }    
+    }
 }

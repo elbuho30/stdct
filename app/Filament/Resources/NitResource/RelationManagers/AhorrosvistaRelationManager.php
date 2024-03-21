@@ -121,4 +121,17 @@ class AhorrosvistaRelationManager extends RelationManager
             //    Tables\Actions\CreateAction::make(),
             ]);
     }
+
+    protected function getTableRecordsPerPageSelectOptions(): array
+    {
+        return [10, 25, 50, 100];
+    }
+
+    public static function canViewForRecord(Model $ownerRecord, string $pageClass): bool
+    {
+        if($ownerRecord->ahorrosVista->count() == 0){
+            return false;
+        }
+        return true;
+    }
 }

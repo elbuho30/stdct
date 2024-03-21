@@ -17,7 +17,12 @@ class NovedavncResource extends Resource
 {
     protected static ?string $model = Novedavnc::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $modelLabel ='Novedad V.N.C.';
+    protected static ?int $navigationSort = 6;
+    protected static ?string $navigationGroup = 'Productos';
+    protected static ?string $navigationIcon = 'heroicon-o-star';
+    protected static ?string $navigationLabel = 'Novedades V.N.C.';
+    protected static ?string $pluralModelLabel ='Novedades V.N.C.';
 
     public static function form(Form $form): Form
     {
@@ -99,14 +104,14 @@ class NovedavncResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -115,5 +120,5 @@ class NovedavncResource extends Resource
             'view' => Pages\ViewNovedavnc::route('/{record}'),
             'edit' => Pages\EditNovedavnc::route('/{record}/edit'),
         ];
-    }    
+    }
 }

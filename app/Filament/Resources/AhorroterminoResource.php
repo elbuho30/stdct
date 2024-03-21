@@ -17,7 +17,12 @@ class AhorroterminoResource extends Resource
 {
     protected static ?string $model = Ahorrotermino::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $modelLabel ='Ahorro a término';
+    protected static ?int $navigationSort = 4;
+    protected static ?string $navigationGroup = 'Productos';
+    protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
+    protected static ?string $navigationLabel = 'Ahorros a término';
+    protected static ?string $pluralModelLabel ='Ahorros a término';
 
     public static function form(Form $form): Form
     {
@@ -142,14 +147,14 @@ class AhorroterminoResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -158,5 +163,5 @@ class AhorroterminoResource extends Resource
             'view' => Pages\ViewAhorrotermino::route('/{record}'),
             'edit' => Pages\EditAhorrotermino::route('/{record}/edit'),
         ];
-    }    
+    }
 }

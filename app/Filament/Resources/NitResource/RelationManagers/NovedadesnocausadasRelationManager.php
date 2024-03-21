@@ -108,7 +108,7 @@ class NovedadesnocausadasRelationManager extends RelationManager
 
     public static function canViewForRecord(Model $ownerRecord, string $pageClass): bool
     {
-        if($ownerRecord->ahorrosTermino->count() == 0){
+        if($ownerRecord->novedadesNoCausadas->count() == 0){
             return false;
         }
         return true;

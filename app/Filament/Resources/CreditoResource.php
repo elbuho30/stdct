@@ -17,7 +17,12 @@ class CreditoResource extends Resource
 {
     protected static ?string $model = Credito::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $modelLabel ='Crédito';
+    protected static ?int $navigationSort = 5;
+    protected static ?string $navigationGroup = 'Productos';
+    protected static ?string $navigationIcon = 'heroicon-o-hand-thumb-up';
+    protected static ?string $navigationLabel = 'Créditos';
+    protected static ?string $pluralModelLabel ='Créditos';
 
     public static function form(Form $form): Form
     {
@@ -251,14 +256,14 @@ class CreditoResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -267,5 +272,5 @@ class CreditoResource extends Resource
             'view' => Pages\ViewCredito::route('/{record}'),
             'edit' => Pages\EditCredito::route('/{record}/edit'),
         ];
-    }    
+    }
 }

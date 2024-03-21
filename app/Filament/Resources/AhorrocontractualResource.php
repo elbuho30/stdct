@@ -17,7 +17,12 @@ class AhorrocontractualResource extends Resource
 {
     protected static ?string $model = Ahorrocontractual::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $modelLabel ='Ahorro contractual';
+    protected static ?int $navigationSort = 3;
+    protected static ?string $navigationGroup = 'Productos';
+    protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
+    protected static ?string $navigationLabel = 'Ahorros contractuales';
+    protected static ?string $pluralModelLabel ='Ahorros contractuales';
 
     public static function form(Form $form): Form
     {
@@ -169,14 +174,14 @@ class AhorrocontractualResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -185,5 +190,5 @@ class AhorrocontractualResource extends Resource
             'view' => Pages\ViewAhorrocontractual::route('/{record}'),
             'edit' => Pages\EditAhorrocontractual::route('/{record}/edit'),
         ];
-    }    
+    }
 }
