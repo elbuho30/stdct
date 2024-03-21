@@ -1,7 +1,8 @@
 <?php
 
 return [
-
+        'brand' => env('APP_NAME', 'Laravel'),
+        'brandLogo' => ('<img src="img/logo_coopentel.png"/>'),
     /*
     |--------------------------------------------------------------------------
     | Broadcasting

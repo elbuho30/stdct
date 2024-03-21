@@ -25,6 +25,10 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->breadcrumbs(false)
+            //->brandName('COOPENTEL')
+            //->brandLogo(asset('img/logo_coopentel.png'))
+            ->brandLogo(fn () => view('livewire.dash-logo'))
+            ->brandLogoHeight('4rem')
             ->id('admin')
             ->path('admin')
             ->login()
