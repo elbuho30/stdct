@@ -20,6 +20,9 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class AhorrosterminoRelationManager extends RelationManager
 {
     protected static string $relationship = 'ahorrosTermino';
+    protected static ?string $pluralLabel = 'Ahorros a término';
+    protected static ?string $label = 'Ahorros a término';
+    protected static ?string $title = 'Ahorros a término';
 
     protected static ?string $recordTitleAttribute = 'id';
 
@@ -37,7 +40,15 @@ class AhorrosterminoRelationManager extends RelationManager
     {
         return $table
         ->columns([
-            Split::make([
+            Grid::make([
+                'default' => 2,
+                'sm' => 3,
+                'md' => 5,
+                'lg' => 6,
+                'xl' => 8,
+                '2xl' => 8,
+            ])
+            ->schema([
                 TextColumn::make('linea_ahorro')
                 ->formatStateUsing(fn($state) => new HtmlString('<b>Línea</b><br>' . $state)),
                 TextColumn::make('nro_cuenta')
@@ -69,8 +80,14 @@ class AhorrosterminoRelationManager extends RelationManager
                 })
                 ]),
                 Panel::make([
-                    Grid::make(4)
-                    ->schema([
+                    Grid::make([
+                'default' => 2,
+                        'sm' => 3,
+                        'md' => 5,
+                        'lg' => 6,
+                        'xl' => 8,
+                        '2xl' => 8,
+                    ])->schema([
                         TextColumn::make('plazo_dias')
                         ->formatStateUsing(fn($state) => new HtmlString('<b>Plazo</b><br>' . $state)),
                         TextColumn::make('fecha_vence_capital')

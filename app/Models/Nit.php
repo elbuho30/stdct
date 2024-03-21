@@ -61,7 +61,7 @@ class Nit extends Model
     }
 
     public function creditos(){
-        return $this->hasMany(CrmCreditos::class, 'nro_documento', 'nro_documento');
+        return $this->hasMany(Credito::class, 'nro_documento', 'nro_documento');
     }
 
     public function creditosCastigados(){
@@ -81,7 +81,7 @@ class Nit extends Model
     }
 
     public function novedadesNoCausadas(){
-        return $this->hasMany(CrmNovedadesVariasNoCausadas::class, 'nro_documento', 'nro_documento');
+        return $this->hasMany(Novedavnc::class, 'nro_documento', 'nro_documento');
     }
 
     public function estudiosAsociado(){

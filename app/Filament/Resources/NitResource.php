@@ -276,7 +276,7 @@ class NitResource extends Resource
 
 
                                 //     RelationManagers\CuentasCorrientesRelationManager::class,
-                                //     RelationManagers\CreditosRelationManager::class,
+
                                 //     RelationManagers\CreditosCastigadosRelationManager::class,
                                 //     RelationManagers\RotativosRelationManager::class,
                                 //     RelationManagers\AvancesRotativoRelationManager::class,
@@ -288,6 +288,13 @@ class NitResource extends Resource
                                     RelationManagers\AhorrosContractualesRelationManager::class,
                                     RelationManagers\AhorrosTerminoRelationManager::class,
                                 ]),
+                                RelationGroup::make('Créditos',[
+                                    RelationManagers\CreditosRelationManager::class,
+                                ]),
+                                RelationGroup::make('Novedades',[
+                                    RelationManagers\NovedadesnocausadasRelationManager::class,
+                                ]),
+
                                 // RelationManagers\EstudiosAsociadoRelationManager::class,
                                 // RelationGroup::make('Información financiera',[
                                 //     RelationManagers\IngresoAsocRelationManager::class,
