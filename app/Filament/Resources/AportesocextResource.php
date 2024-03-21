@@ -17,7 +17,7 @@ class AportesocextResource extends Resource
 {
     protected static ?string $model = Aportesocext::class;
 
-    protected static ?string $modelLabel ='Aportes';
+    protected static ?string $modelLabel ='Aporte';
     protected static ?int $navigationSort = 1;
     protected static ?string $navigationGroup = 'Productos';
     protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';

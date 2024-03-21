@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Tables\Columns\Layout\Panel;
 use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\Layout\Split;
+use Filament\Tables\Columns\Layout\Section;
 use Filament\Tables\Columns\Layout\View;
 use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -43,43 +44,57 @@ class NovedadesnocausadasRelationManager extends RelationManager
     {
         return $table
         ->columns([
-            Grid::make([
-                'default' => 2,
-                'sm' => 3,
-                'md' => 5,
-                'lg' => 6,
-                'xl' => 8,
-                '2xl' => 8,
-            ])
-            ->schema([
-            TextColumn::make('id_novedad')->label('Id Novedad'),
-            TextColumn::make('nombre_novedad')->label('Descripción'),
-            TextColumn::make('cta_contable')->label('Cta. Contable'),
+        Grid::make([
+            'default' => 2,
+            'sm' => 3,
+            'md' => 6,
+            'lg' => 6,
+            'xl' => 6,
+            '2xl' =>6,
+        ])
+        ->schema([
+            // TextColumn::make('id_novedad')
+            // ->formatStateUsing(fn($state) => new HtmlString('<b>Id Novedad</b><br>' . $state)),
+            TextColumn::make('nombre_novedad')
+            //->columnSpan(2)
+            ->formatStateUsing(fn($state) => new HtmlString('<b>Descripción</b><br>' . $state)),
+            TextColumn::make('cta_contable')
+            ->formatStateUsing(fn($state) => new HtmlString('<b>Cta. Contable</b><br>' . $state)),
             TextColumn::make('fecha_inicio')
             ->formatStateUsing(function($state) {
                 $fecha = \DateTime::createFromFormat('M d Y h:i:s:A',$state);
                 if($fecha){
                     $fechaSTR = $fecha->format('Y-m-d');
-                    return $fechaSTR;
+                    //return $fechaSTR;
+                    return new HtmlString('<b>Últ. Transacción</b><br> '. date('Y-m-d',$fechaSTR));
                 }
 
                 $fechaSTR = strtotime($state);
-                return date('Y-m-d',$fechaSTR);
+                //return date('Y-m-d',$fechaSTR);
+                return new HtmlString('<b>Últ. Transacción</b><br> '. date('Y-m-d',$fechaSTR));
             }),
             TextColumn::make('saldo')
-            ->formatStateUsing(fn($state) => number_format($state))
-            ->prefix('$'),
+            //->formatStateUsing(fn($state) => number_format($state))
+            ->formatStateUsing(fn($state) => new HtmlString('<b>Saldo</b><br> $' . number_format($state))),
             TextColumn::make('cuota')
-            ->formatStateUsing(fn($state) => number_format($state))
-            ->prefix('$'),
+            //->formatStateUsing(fn($state) => number_format($state))
+            ->formatStateUsing(fn($state) => new HtmlString('<b>Cuota</b><br> $' . number_format($state))),
+            //->prefix('$'),
             TextColumn::make('estado')
-            ->formatStateUsing(function($state) {
-                if($state == 'A'){
-                    return 'Activo';
+            // ->formatStateUsing(function($state) {
+            //     if($state == 'A'){
+            //         return 'Activo';
+            //     }
+            //     return "Inactivo";
+            // }),
+            ->formatStateUsing(function($state){
+                if ($state == 'A') {
+                    return new HtmlString('<b>Estado</b><br> Activo');
+                }else{
+                    return new HtmlString('<b>Estado</b><br> Inactivo');
                 }
-                return "Inactivo";
-            }),
-        ]),
+            })
+        ])
         ])
             ->filters([
                 //

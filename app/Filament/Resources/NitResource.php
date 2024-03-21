@@ -38,7 +38,8 @@ class NitResource extends Resource
     protected static ?string $navigationIcon = 'feathericon-users';
     protected static ?string $navigationLabel = 'Asociados';
     protected static ?int $navigationSort = 1;
-    protected static ?string $pluralModelLabel = 'Asociados';
+    protected static ?string $pluralModelLabel = 'Asociado';
+    protected static ?string $slug = 'datos';
 
     protected function getHeaderActions(): array
     {
@@ -282,18 +283,18 @@ class NitResource extends Resource
                                 //     RelationManagers\AvancesRotativoRelationManager::class,
                                 //     RelationManagers\NovedadesCausadasRelationManager::class,
                                 //     RelationManagers\NovedadesNoCausadasRelationManager::class,
-                                ]),
+                                ])->icon('heroicon-o-currency-dollar'),
                                 RelationGroup::make('Ahorros',[
                                     RelationManagers\AhorrosVistaRelationManager::class,
                                     RelationManagers\AhorrosContractualesRelationManager::class,
                                     RelationManagers\AhorrosTerminoRelationManager::class,
-                                ]),
+                                ])->icon('heroicon-o-currency-dollar'),
                                 RelationGroup::make('Créditos',[
                                     RelationManagers\CreditosRelationManager::class,
-                                ]),
+                                ])->icon('heroicon-o-hand-thumb-up'),
                                 RelationGroup::make('Novedades',[
                                     RelationManagers\NovedadesnocausadasRelationManager::class,
-                                ]),
+                                ])->icon('heroicon-o-star'),
 
                                 // RelationManagers\EstudiosAsociadoRelationManager::class,
                                 // RelationGroup::make('Información financiera',[
