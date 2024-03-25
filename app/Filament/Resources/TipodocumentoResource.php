@@ -20,9 +20,9 @@ class TipodocumentoResource extends Resource
 
     protected static ?string $modelLabel ='Tipo Documento';
     protected static ?string $navigationGroup = 'Maestros';
-    protected static ?string $navigationIcon = 'heroicon-o-identification';   
+    protected static ?string $navigationIcon = 'heroicon-o-identification';
     protected static ?string $navigationLabel = 'Tipos Documento';
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 9;
     protected static ?string $pluralModelLabel ='Tipos Documento';
 
     public static function form(Form $form): Form
@@ -69,14 +69,14 @@ class TipodocumentoResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -85,5 +85,5 @@ class TipodocumentoResource extends Resource
             'view' => Pages\ViewTipodocumento::route('/{record}'),
             'edit' => Pages\EditTipodocumento::route('/{record}/edit'),
         ];
-    }    
+    }
 }

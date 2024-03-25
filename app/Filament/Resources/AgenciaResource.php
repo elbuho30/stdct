@@ -21,9 +21,9 @@ class AgenciaResource extends Resource
 
     protected static ?string $modelLabel ='Agencia';
     protected static ?string $navigationGroup = 'Maestros';
-    protected static ?string $navigationIcon = 'heroicon-o-building-office-2';   
+    protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
     protected static ?string $navigationLabel = 'Agencias';
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 8;
     protected static ?string $pluralModelLabel ='Agencias';
 
     public static function form(Form $form): Form
@@ -105,14 +105,14 @@ class AgenciaResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -121,5 +121,5 @@ class AgenciaResource extends Resource
             'view' => Pages\ViewAgencia::route('/{record}'),
             'edit' => Pages\EditAgencia::route('/{record}/edit'),
         ];
-    }    
+    }
 }

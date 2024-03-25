@@ -18,7 +18,7 @@ class AhorrocontractualResource extends Resource
     protected static ?string $model = Ahorrocontractual::class;
 
     protected static ?string $modelLabel ='Ahorro contractual';
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 4;
     protected static ?string $navigationGroup = 'Productos';
     protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
     protected static ?string $navigationLabel = 'Ahorros contractuales';

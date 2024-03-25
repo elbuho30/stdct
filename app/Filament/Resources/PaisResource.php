@@ -21,9 +21,9 @@ class PaisResource extends Resource
     protected static ?string $model = Pais::class;
     protected static ?string $modelLabel ='Países';
     protected static ?string $navigationGroup = 'Maestros';
-    protected static ?string $navigationIcon =  'heroicon-o-globe-americas';  
+    protected static ?string $navigationIcon =  'heroicon-o-globe-americas';
     protected static ?string $navigationLabel = 'Países';
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 10;
     protected static ?string $pluralModelLabel ='Países';
 
     public static function form(Form $form): Form
@@ -46,7 +46,7 @@ class PaisResource extends Resource
                 Tables\Columns\TextColumn::make('id_pais')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('nombre_pais')
-                    ->searchable(),                
+                    ->searchable(),
             ])
             ->filters([
                 //
@@ -72,14 +72,14 @@ class PaisResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -88,5 +88,5 @@ class PaisResource extends Resource
             'view' => Pages\ViewPais::route('/{record}'),
             'edit' => Pages\EditPais::route('/{record}/edit'),
         ];
-    }    
+    }
 }

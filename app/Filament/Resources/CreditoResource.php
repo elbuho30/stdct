@@ -18,7 +18,7 @@ class CreditoResource extends Resource
     protected static ?string $model = Credito::class;
 
     protected static ?string $modelLabel ='Crédito';
-    protected static ?int $navigationSort = 5;
+    protected static ?int $navigationSort = 6;
     protected static ?string $navigationGroup = 'Productos';
     protected static ?string $navigationIcon = 'heroicon-o-hand-thumb-up';
     protected static ?string $navigationLabel = 'Créditos';

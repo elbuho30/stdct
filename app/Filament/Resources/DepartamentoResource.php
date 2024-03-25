@@ -22,9 +22,9 @@ class DepartamentoResource extends Resource
 
     protected static ?string $modelLabel ='Departamentos';
     protected static ?string $navigationGroup = 'Maestros';
-    protected static ?string $navigationIcon = 'heroicon-o-map';  
+    protected static ?string $navigationIcon = 'heroicon-o-map';
     protected static ?string $navigationLabel = 'Departamentos';
-    protected static ?int $navigationSort = 4;
+    protected static ?int $navigationSort = 11;
     protected static ?string $pluralModelLabel ='Departamentos';
 
 
@@ -83,14 +83,14 @@ class DepartamentoResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -99,5 +99,5 @@ class DepartamentoResource extends Resource
             'view' => Pages\ViewDepartamento::route('/{record}'),
             'edit' => Pages\EditDepartamento::route('/{record}/edit'),
         ];
-    }    
+    }
 }

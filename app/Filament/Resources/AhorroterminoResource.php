@@ -18,7 +18,7 @@ class AhorroterminoResource extends Resource
     protected static ?string $model = Ahorrotermino::class;
 
     protected static ?string $modelLabel ='Ahorro a término';
-    protected static ?int $navigationSort = 4;
+    protected static ?int $navigationSort = 5;
     protected static ?string $navigationGroup = 'Productos';
     protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
     protected static ?string $navigationLabel = 'Ahorros a término';

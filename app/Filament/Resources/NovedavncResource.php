@@ -18,7 +18,7 @@ class NovedavncResource extends Resource
     protected static ?string $model = Novedavnc::class;
 
     protected static ?string $modelLabel ='Novedad V.N.C.';
-    protected static ?int $navigationSort = 6;
+    protected static ?int $navigationSort = 7;
     protected static ?string $navigationGroup = 'Productos';
     protected static ?string $navigationIcon = 'heroicon-o-star';
     protected static ?string $navigationLabel = 'Novedades V.N.C.';

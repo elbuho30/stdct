@@ -18,7 +18,7 @@ class AhorrovistaResource extends Resource
     protected static ?string $model = Ahorrovista::class;
 
     protected static ?string $modelLabel ='Ahorro a la vista';
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 3;
     protected static ?string $navigationGroup = 'Productos';
     protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
     protected static ?string $navigationLabel = 'Ahorros a la vista';
