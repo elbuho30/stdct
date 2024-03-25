@@ -90,7 +90,8 @@ class ModalTransaccion extends Component implements HasTable, HasForms
             ->formatStateUsing(fn($state)=>number_format($state))
             ->prefix('$'),
             TextColumn::make('descripcion')
-            ->limit(70)
+            //->limit(70)
+            ->wrap()
             ->label('Descripción'),
         ];
     }
