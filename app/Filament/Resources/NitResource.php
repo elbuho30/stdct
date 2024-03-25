@@ -36,7 +36,7 @@ class NitResource extends Resource
     protected static ?string $modelLabel = 'Asociado';
     protected static ?string $navigationGroup = 'Datos';
     protected static ?string $navigationIcon = 'feathericon-users';
-    protected static ?string $navigationLabel = 'Asociados';
+    protected static ?string $navigationLabel = 'Asociado';
     protected static ?int $navigationSort = 1;
     protected static ?string $pluralModelLabel = 'Asociado';
     protected static ?string $slug = 'datos';
@@ -249,7 +249,9 @@ class NitResource extends Resource
                     }),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+                Tables\Actions\ViewAction::make()->icon('heroicon-m-eye')
+                ->button()->labeledFrom('md')
+                ->tooltip('Ver asociado'),
                 //Tables\Actions\ActionGroup::make([
                     // Tables\Actions\EditAction::make(),
                     // Tables\Actions\DeleteAction::make(),

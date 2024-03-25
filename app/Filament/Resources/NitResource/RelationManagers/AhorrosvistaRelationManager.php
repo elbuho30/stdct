@@ -16,7 +16,10 @@ use Illuminate\Database\Eloquent\Model;
 use Filament\Tables\Actions\Action;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-
+use App\Models\{Transahovist};
+use function Filament\authorize;
+use Illuminate\Support\Facades\Gate;
+use Filament\Facades\Filament;
 class AhorrosvistaRelationManager extends RelationManager
 {
     protected static string $relationship = 'ahorrosVista';
@@ -109,8 +112,27 @@ class AhorrosvistaRelationManager extends RelationManager
               //  Tables\Actions\CreateAction::make(),
             ])
             ->actions([
-             //   Tables\Actions\EditAction::make(),
-              //  Tables\Actions\DeleteAction::make(),
+                Action::make('modal')
+                ->label('')
+                ->modalSubmitAction(false)
+                ->modalCancelAction(false)
+                ->action(function(){})
+                ->modalWidth('7xl')
+                ->icon('heroicon-o-arrows-right-left')
+                ->tooltip('Ver transacciones')
+                ->modalContent(function (Model $record) {
+                   $id = $record->id;
+                    return view('filament.pages.actions.modal', ['id' => $id, 'model' => 'ahorros_vista']);
+                })
+                ->modalHeading(function(Model $record){
+                    return 'A la vista | Transacciones Cta.: ' . $record->nro_cuenta;
+                })
+                ->visible(function(Model $record) {
+                    if (Transahovist::where('crm_ahorro_id', $record->id)->get()->isEmpty()) {
+                        return false;
+                    }
+                    return true;
+                }),
             ])
             ->bulkActions([
             //    Tables\Actions\BulkActionGroup::make([
