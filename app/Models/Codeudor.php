@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Transaporsocext extends Model
+class Codeudor extends Model
 {
     public function getDateFormat()
     {
@@ -20,13 +20,18 @@ class Transaporsocext extends Model
 
     use HasFactory;
 
-    protected $table = 'trans_aportessocext';
+    protected $table = 'codeudores';
     protected $guarded = ['id'];
 
-    public function agencia(){
-        return $this->belongsTo(Agencia::class, 'id_agencia','id');
+    public function creditosCode(){
+        return $this->belongsTo(Credito::class, 'nro_documento', 'nro_documento');
+    } 
+    public function asociadocod(){
+        return $this->belongsTo(Nit::class, 'nro_documento_cod','nro_documento');
     }
-    public function agenciaTrans(){
-        return $this->belongsTo(Agencia::class, 'id_agencia_transaccion','id');
+    public function asociado(){
+        return $this->belongsTo(Nit::class, 'nro_documento','nro_documento');
     }
 }
+
+

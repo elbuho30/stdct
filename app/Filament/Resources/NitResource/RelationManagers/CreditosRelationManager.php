@@ -17,7 +17,7 @@ use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Credito;
 use Filament\Tables\Actions\Action;
-//use App\Models\{Transcred,Codeudor};
+use App\Models\{Transcred,Codeudor};
 
 class CreditosRelationManager extends RelationManager
 {
@@ -188,7 +188,7 @@ class CreditosRelationManager extends RelationManager
                             if($state == 'N'){
                                 return new HtmlString('<b>Jurídico</b><br> No');
                             }else{
-                                return new HtmlString('<b>Jurídico</b><br> Si');;
+                                return new HtmlString('<b>Jurídico</b><br> Si');
                             }
                         }),
                         TextColumn::make('pre_juridico')
@@ -196,7 +196,7 @@ class CreditosRelationManager extends RelationManager
                             if($state == 'N'){
                                 return new HtmlString('<b>Prejurídico</b><br> No');
                             }else{
-                                return new HtmlString('<b>Prejurídico</b><br> Si');;
+                                return new HtmlString('<b>Prejurídico</b><br> Si');
                             }
                         }),
                         TextColumn::make('nom_garantia')
@@ -213,8 +213,43 @@ class CreditosRelationManager extends RelationManager
             //    Tables\Actions\CreateAction::make(),
             ])
             ->actions([
-            //    Tables\Actions\EditAction::make(),
-            //    Tables\Actions\DeleteAction::make(),
+                Action::make('modal')
+                ->label('')
+                ->modalSubmitAction(false)
+                ->modalCancelAction(false)
+                ->action(function(){})
+                ->modalWidth('7xl')
+                ->icon('heroicon-o-arrows-right-left')
+                ->tooltip('Ver transacciones')
+                ->modalContent(function (Model $record) {
+                   $id = $record->id;
+                    return view('filament.pages.actions.modal', ['id' => $id, 'model' => 'creditos']);
+                })
+                ->modalHeading(function(Model $record){
+                    return 'Créditos | Transacciones Pagaré: ' . $record->nro_pagare;
+                })
+                ->visible(function(Model $record) {
+                    if (TransCred::where('pagare_id', $record->id)->get()->isEmpty()) {
+                        return false;
+                    }
+                    return true;
+                }),
+                Action::make('codeudores')
+                ->label('')
+                ->modalButton('Aceptar')
+                ->icon('heroicon-o-users')
+                ->tooltip('Ver codeudor(es)')
+                ->action(fn() => '')
+                ->modalContent(function(Model $record) {
+                    $nroPagare = $record->nro_pagare;
+                    return view('filament.pages.actions.codeudor-modal', ['nroPagare' => $nroPagare]);
+                })
+                ->visible(function(Model $record) {
+                    if (Codeudor::where('pagare', $record->nro_pagare)->get()->isEmpty()) {
+                        return false;
+                    }
+                    return true;
+                })
             ])
             ->bulkActions([
                // Tables\Actions\BulkActionGroup::make([

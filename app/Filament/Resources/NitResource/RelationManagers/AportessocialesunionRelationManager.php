@@ -15,7 +15,9 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\HtmlString;
 use Illuminate\Database\Eloquent\Model;
+use Filament\Tables\Actions\Action;
 use App\Models\Aportesocext;
+use App\Models\Transaporsocext;
 
 class AportessocialesunionRelationManager extends RelationManager
 {
@@ -97,8 +99,27 @@ class AportessocialesunionRelationManager extends RelationManager
                /*  Tables\Actions\CreateAction::make(), */
             ])
             ->actions([
-               /*  Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),*/
+                Action::make('modal')
+                ->label('')
+                ->modalSubmitAction(false)
+                ->modalCancelAction(false)
+                ->action(function(){})
+                ->modalWidth('7xl')
+                ->icon('heroicon-o-arrows-right-left')
+                ->tooltip('Ver transacciones')
+                ->modalContent(function (Model $record) {
+                   $id = $record->id;
+                    return view('filament.pages.actions.modal', ['id' => $id, 'model' => 'aportes_social']);
+                })
+                ->modalHeading(function(Model $record){
+                    return 'Aportes Sociales | Transacciones Cta.: ' . $record->nro_cuenta;
+                })
+                ->visible(function(Model $record) {
+                    if (Transaporsocext::where('crm_ahorro_id', $record->id)->get()->isEmpty()) {
+                        return false;
+                    }
+                    return true;
+                }),
             ])
             ->bulkActions([
                 /* Tables\Actions\BulkActionGroup::make([

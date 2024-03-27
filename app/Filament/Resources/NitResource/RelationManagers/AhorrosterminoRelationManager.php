@@ -16,6 +16,7 @@ use Filament\Tables\Actions\Action;
 use Illuminate\Support\HtmlString;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Models\{Transahoterm};
 
 class AhorrosterminoRelationManager extends RelationManager
 {
@@ -70,14 +71,13 @@ class AhorrosterminoRelationManager extends RelationManager
                     $state = strtotime($state);
                     return new HtmlString('<b>Últ. Transacción</b><br> '. date('Y-m-d',$state));
                 }),
-                TextColumn::make('estado')
-                ->formatStateUsing(function($state){
-                    if ($state == 'A') {
-                        return new HtmlString('<b>Estado</b><br> Activo');
-                    }else{
-                        return new HtmlString('<b>Estado</b><br> Inactivo');
-                    }
-                })
+                TextColumn::make('plazo_dias')
+                ->formatStateUsing(fn($state) => new HtmlString('<b>Plazo</b><br>' . $state)),
+                TextColumn::make('fecha_vence_capital')
+                ->formatStateUsing(function($state) {
+                    $state = strtotime($state);
+                    return new HtmlString('<b>Fecha Vence</b><br> '. date('Y-m-d',$state));
+                }),
                 ]),
                 Panel::make([
                     Grid::make([
@@ -85,18 +85,11 @@ class AhorrosterminoRelationManager extends RelationManager
                         'sm' => 3,
                         'md' => 5,
                         'lg' => 6,
-                        'xl' => 8,
-                        '2xl' => 8,
+                        'xl' => 6,
+                        '2xl' => 6,
                     ])->schema([
-                        TextColumn::make('plazo_dias')
-                        ->formatStateUsing(fn($state) => new HtmlString('<b>Plazo</b><br>' . $state)),
-                        TextColumn::make('fecha_vence_capital')
-                        ->formatStateUsing(function($state) {
-                            $state = strtotime($state);
-                            return new HtmlString('<b>Fecha Vence</b><br> '. date('Y-m-d',$state));
-                        }),
                         TextColumn::make('periodo_liq_int_dias')
-                        ->formatStateUsing(fn($state) => new HtmlString('<b>Periodo Liquidación</b><br>' . $state)),
+                        ->formatStateUsing(fn($state) => new HtmlString('<b>Per. Liq. Interés</b><br>' . $state)),
                         TextColumn::make('tasa_captacion')
                         ->formatStateUsing(fn($state) => new HtmlString('<b>Tasa</b><br>' . number_format($state,2) . '%')),
                         TextColumn::make('int_causado')
@@ -118,8 +111,27 @@ class AhorrosterminoRelationManager extends RelationManager
               //  Tables\Actions\CreateAction::make(),
             ])
             ->actions([
-              //  Tables\Actions\EditAction::make(),
-              //  Tables\Actions\DeleteAction::make(),
+                Action::make('modal')
+                ->label('')
+                ->modalSubmitAction(false)
+                ->modalCancelAction(false)
+                ->action(function(){})
+                ->modalWidth('7xl')
+                ->icon('heroicon-o-arrows-right-left')
+                ->tooltip('Ver transacciones')
+                ->modalContent(function (Model $record) {
+                   $id = $record->id;
+                    return view('filament.pages.actions.modal', ['id' => $id, 'model' => 'ahorros_termino']);
+                })
+                ->modalHeading(function(Model $record){
+                    return 'Ahorro Termino | Transacciones Cta.: ' . $record->nro_cuenta;
+                })
+                ->visible(function(Model $record) {
+                    if (Transahoterm::where('crm_ahorro_id', $record->id)->get()->isEmpty()) {
+                        return false;
+                    }
+                    return true;
+                }),
             ])
             ->bulkActions([
               //  Tables\Actions\BulkActionGroup::make([

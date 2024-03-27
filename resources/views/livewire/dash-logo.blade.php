@@ -3,7 +3,7 @@
         'filament-brand overflow-x-clip tracking-tight',
         'dark:text-white' => config('filament.dark_mode'),
     ])>
-    <header class="fi-sidebar-header flex h-16 items-center bg-white dark:bg-gray-900 lg:shadow-sm">
+    <header class="fi-sidebar-header flex h-16 items-center bg-white dark:bg-gray-900">
         {{-- @if (filled($brandLogo = config('filament.brandLogo')))
         <div x-show="$store.sidebar.isOpen" x-transition:enter="lg:transition lg:delay-100" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
             <a href="http://stdct/admin">

@@ -113,7 +113,7 @@ class Nit extends Model
     }
 
     public function codeudores(){
-        return $this->hasMany(CrmCodeudores::class, 'nro_documento','nro_documento');
+        return $this->hasMany(Codeudor::class, 'nro_documento','nro_documento');
     }
 
     public function codeudoresInv(){

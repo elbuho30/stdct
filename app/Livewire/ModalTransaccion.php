@@ -3,8 +3,8 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\{Transaporsocext,Transahovist,
-  //   CrmTransAhoVist, CrmTransAhoContr, CrmTransAhoTerm,CrmTransCuentasCorr, CrmTransCred
+use App\Models\{Transaporsocext,Transahovist,Transahocontr,Transahoterm,Transcred,
+  //   CrmTransAhoVist, CrmTransAhoContr, CrmTransAhoTerm,CrmTransCuentasCorr,
     };
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -39,18 +39,18 @@ class ModalTransaccion extends Component implements HasTable, HasForms
             case 'ahorros_vista':
                 return Transahovist::where('crm_ahorro_id', $this->recordId)->orderBY('fecha_transaccion','desc');
                 break;
-            // case 'ahorros_contractuales':
-            //     return CrmTransAhoContr::where('crm_ahorro_id', $this->recordId);
-            //     break;
-            // case 'ahorros_termino':
-            //     return CrmTransAhoTerm::where('crm_ahorro_id', $this->recordId);
-            //     break;
+            case 'ahorros_contractuales':
+                return Transahocontr::where('crm_ahorro_id', $this->recordId)->orderBY('fecha_transaccion','desc');
+                break;
+            case 'ahorros_termino':
+                return Transahoterm::where('crm_ahorro_id', $this->recordId)->orderBY('fecha_transaccion','desc');
+                break;
             // case 'cuentas_corrientes':
             //     return CrmTransCuentasCorr::where('crm_ahorro_id', $this->recordId);
             //     break;
-            // case 'creditos':
-            //     return CrmTransCred::where('nro_cuenta', $this->recordId);
-            //     break;
+            case 'creditos':
+                return Transcred::where('pagare_id', $this->recordId)->orderBY('fecha_transaccion','desc');
+                break;
 
         }
 

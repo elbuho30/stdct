@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Transaporsocext extends Model
+class Transahocontr extends Model
 {
     public function getDateFormat()
     {
@@ -20,7 +20,7 @@ class Transaporsocext extends Model
 
     use HasFactory;
 
-    protected $table = 'trans_aportessocext';
+    protected $table = 'trans_aho_contr';
     protected $guarded = ['id'];
 
     public function agencia(){
